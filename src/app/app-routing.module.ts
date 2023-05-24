@@ -6,6 +6,7 @@ import { CspsComponent } from './dashboard/components/csps/csps.component';
 import { SignInComponent } from './auth/components/sign-in/sign-in.component';
 import { SignUpComponent } from './auth/components/sign-up/sign-up.component';
 import { RecoverComponent } from './auth/components/recover/recover.component';
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/auth/sign-in', pathMatch: 'full' }, // redirect to `first-component`
@@ -17,7 +18,7 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'dashboard', component: DashboardComponent, children: [
+    path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard], children: [
       { path: 'csps', component: CspsComponent }
     ]
   },
