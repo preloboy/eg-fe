@@ -2,7 +2,7 @@
 <div class="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" style="height: 100vh;"
     tabindex="-1" role="dialog" id="modalSignin">
 
-    <div *ngIf="showAlert" class="alert alert-primary" role="alert">{{ alertMessage }}</div>
+    <div *ngIf="alert" class="alert alert-warning text-center" role="alert">{{ alertMessage }}</div>
 
     <div class="modal-dialog" role="document">
         <router-outlet></router-outlet>

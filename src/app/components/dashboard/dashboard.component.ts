@@ -6,16 +6,21 @@ import { AppwriteService } from 'src/app/services/appwrite/appwrite.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent{
+export class DashboardComponent {
   title = 'Dashboard'
 
-  constructor(private api:AppwriteService){}
+  constructor(private api: AppwriteService) { }
 
 
 
-  signOut(){
-    // this.api.deleteSession(sessionId)
-    console.log(this.api.getSession())
+  signOut() {
+    const currentSession = this.api.getSession()
+    currentSession.then((response) => {
+      const sessionId = response.$id
+      console.log(response)
+      this.api.deleteSession(sessionId)
+    })
+    // console.log(response)
   }
 
 }

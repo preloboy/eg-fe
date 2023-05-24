@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalService } from 'src/app/services/global/global.service';
 
 
 @Component({
@@ -8,21 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AuthComponent {
 
-  showAlert = false;
-  alertType: string;
-  alertMessage: string;
+  alert: boolean = false
+  alertType: string = 'Type';
+  alertMessage: string = 'Message';
 
-  constructor() {
-    this.alertMessage = '';
-    this.alertType = '';
-  }
+  constructor(private service: GlobalService) { }
 
-  setAlert(type: string, message: string) {
+  showAlert(type: string, message: string) {
     this.alertType = type;
     this.alertMessage = message;
-    this.showAlert = true;
+    this.alert = true;
     setTimeout(() => {
-      this.showAlert = false;
+      this.alert = false;
     }, 5000);
   }
 
